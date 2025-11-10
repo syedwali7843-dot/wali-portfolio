@@ -28,11 +28,10 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       z-index: 1000;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       padding: 12px 10%;
     }
-    nav h1 { font-size: 1.3rem; color: #2d5db0; }
     nav ul { list-style: none; display: flex; gap: 2rem; }
     nav li { font-weight: 500; }
     nav a:hover { text-decoration: underline; }
@@ -132,24 +131,14 @@
     #experience { background: #f9f9f9; }
     #experience h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; }
     .timeline {
-      position: relative;
       max-width: 800px;
       margin: auto;
-      padding-left: 20px;
-      border-left: 2px solid #ddd;
+      padding-left: 0;
     }
     .timeline-item {
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -10px;
-      top: 5px;
-      width: 12px; height: 12px;
-      background: #2d5db0;
-      border-radius: 50%;
+      margin-bottom: 2.5rem;
+      border-left: 3px solid transparent;
+      padding-left: 1rem;
     }
     .timeline-item h3 { color: #2d5db0; }
     .timeline-item small { color: #666; display: block; margin-bottom: 0.5rem; }
@@ -230,7 +219,6 @@
 <body>
   <!-- NAVBAR -->
   <nav>
-    <h1>Syed Wali</h1>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -239,7 +227,7 @@
     </ul>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero" id="hero-img">
     <div class="hero-left"></div>
     <div class="hero-right">
@@ -319,17 +307,16 @@
 
   <!-- JAVASCRIPT -->
   <script>
-    // Cinematic parallax + fade effect
+    // Cinematic parallax + fade
     (function() {
       const hero = document.querySelector('.hero-left');
       if (!hero) return;
-
       window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        const parallax = scrollY * 0.25;
-        const opacity = Math.max(1 - scrollY / 700, 0.6);
-        hero.style.setProperty('--scrollY', `${parallax}px`);
-        hero.style.setProperty('--photoOpacity', opacity);
+        const y = window.scrollY;
+        const p = y * 0.25;
+        const o = Math.max(1 - y / 700, 0.6);
+        hero.style.setProperty('--scrollY', `${p}px`);
+        hero.style.setProperty('--photoOpacity', o);
       }, { passive: true });
     })();
 
@@ -340,8 +327,7 @@
       if (!form) return;
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const email = 'syedwali7843@gmail.com';
-        const ajaxUrl = 'https://formsubmit.co/ajax/' + email;
+        const ajaxUrl = 'https://formsubmit.co/ajax/syedwali7843@gmail.com';
         fetch(ajaxUrl, {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
@@ -353,10 +339,7 @@
           thankYou.style.display = 'block';
           setTimeout(() => thankYou.style.display = 'none', 5000);
         })
-        .catch(err => {
-          console.error('Error:', err);
-          form.submit();
-        });
+        .catch(err => form.submit());
       });
     })();
 
