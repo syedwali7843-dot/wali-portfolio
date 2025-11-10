@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Syed Wali – HR & People Operations Portfolio</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -18,7 +17,7 @@
       --transition: all 0.25s ease;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
@@ -27,11 +26,39 @@
       overflow-x: hidden;
     }
 
+    /* ---------- NAVBAR ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffffcc;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 10%;
+      z-index: 1000;
+    }
+
+    .nav-logo { font-size: 20px; font-weight: 700; color: var(--accent); }
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ---------- HERO ---------- */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 100vh;
       overflow: hidden;
+      padding-top: 70px;
     }
 
     .hero-left {
@@ -41,28 +68,17 @@
       background-position: 35% center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      filter: grayscale(5%) contrast(120%) brightness(1.35) saturate(115%);
-      transform: scale(1);
+      filter: grayscale(5%) contrast(120%) brightness(1.35);
       transition: transform 1s ease;
     }
 
-    /* Hover animation (zoom only, no color change) */
-    .hero-left:hover {
-      transform: scale(1.05);
-    }
-
-    /* Light overlay for readability */
+    .hero-left:hover { transform: scale(1.05); }
     .hero-left::before {
       content: "";
       position: absolute;
       inset: 0;
       background: rgba(255, 255, 255, 0.15);
       z-index: 1;
-      transition: background 0.5s ease;
-    }
-
-    .hero-left:hover::before {
-      background: rgba(255, 255, 255, 0.08);
     }
 
     .hero-right {
@@ -73,35 +89,13 @@
       background: #ffffff;
       box-shadow: var(--shadow);
       animation: fadeUp 1s ease forwards;
-      z-index: 2;
-      position: relative;
     }
 
-    h1 {
-      font-size: 42px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
+    h1 { font-size: 42px; font-weight: 800; margin-bottom: 8px; }
+    h2 { font-size: 20px; color: var(--accent); margin-bottom: 18px; font-weight: 600; }
+    p { color: #333; margin-bottom: 30px; max-width: 520px; }
 
-    h2 {
-      font-size: 20px;
-      color: var(--accent);
-      margin-bottom: 18px;
-      font-weight: 600;
-    }
-
-    p {
-      color: #333;
-      margin-bottom: 30px;
-      max-width: 520px;
-    }
-
-    .btns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
+    .btns { display: flex; flex-wrap: wrap; gap: 14px; }
     .btn {
       padding: 12px 22px;
       border-radius: var(--radius);
@@ -110,33 +104,130 @@
       transition: var(--transition);
       border: 1px solid transparent;
     }
-
     .btn.primary {
       background: var(--accent);
       color: #fff;
       border-color: var(--accent);
     }
-
-    .btn.primary:hover {
-      background: #2f405f;
-      border-color: #2f405f;
-    }
-
+    .btn.primary:hover { background: #2f405f; }
     .btn.secondary {
       background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
     }
-
     .btn.secondary:hover {
       background: #e9edf2;
       border-color: var(--accent);
       color: var(--accent);
     }
 
+    section { scroll-margin-top: 80px; }
+
+    /* ---------- ABOUT, EXPERIENCE, SKILLS, CONTACT ---------- */
+    .about, .experience, .skills, .contact {
+      padding: 100px 10%;
+      background: #fff;
+      animation: fadeUp 1s ease;
+    }
+    .about h2, .experience h2, .skills h2, .contact h2 {
+      font-size: 32px;
+      color: var(--accent);
+      margin-bottom: 25px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .experience { background: var(--bg); }
+    .timeline { position: relative; margin-left: 30px; border-left: 3px solid var(--accent); padding-left: 30px; }
+    .timeline-item { margin-bottom: 40px; position: relative; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -12px; top: 5px;
+      width: 15px; height: 15px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .skills .bar { height: 10px; background: var(--bg); border-radius: 6px; overflow: hidden; }
+    .skills .bar-fill { height: 100%; background: var(--accent); border-radius: 6px; }
+
+    .contact {
+      background: var(--bg);
+      text-align: center;
+    }
+    form {
+      max-width: 600px;
+      margin: 30px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, textarea {
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      font-family: 'Inter';
+      font-size: 15px;
+      resize: none;
+    }
+    input:focus, textarea:focus { border-color: var(--accent); outline: none; }
+    button {
+      background: var(--accent);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover { background: #2f405f; }
+
+    .thank-you {
+      display: none;
+      background: #fff;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 18px;
+      max-width: 600px;
+      margin: 25px auto 0;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      animation: fadeUp 0.6s ease;
+    }
+
+    /* ---------- BACK TO TOP BUTTON ---------- */
+    #backToTop {
+      position: fixed;
+      bottom: 35px;
+      right: 35px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+    #backToTop:hover { background: #2f405f; transform: scale(1.08); }
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
     footer {
       text-align: center;
-      padding: 30px 15px;
+      padding: 25px;
+      background: #fff;
       color: #666;
       font-size: 14px;
     }
@@ -145,28 +236,26 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { height: 45vh; background-attachment: scroll; background-position: center center; }
-      .hero-right { padding: 40px; }
-      h1 { font-size: 32px; }
-    }
   </style>
 </head>
 
 <body>
+  <nav>
+    <div class="nav-logo">Syed Wali</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
   <section class="hero">
     <div class="hero-left" id="hero-img"></div>
-
     <div class="hero-right">
       <h1>I’m Syed Wali</h1>
       <h2>Customer Support Specialist | HR & People Operations Professional</h2>
-      <p>
-        Bridging People, Processes & Technology to create efficient, people-first workplaces. 
-        Skilled in HR technology, onboarding, and client success — combining empathy with operational excellence.
-      </p>
-
+      <p>Bridging People, Processes & Technology to create efficient, people-first workplaces.</p>
       <div class="btns">
         <a class="btn primary" href="./assets/Syed_Wali_HR_Resume.pdf" target="_blank">View Resume</a>
         <a class="btn secondary" href="https://www.linkedin.com/in/syed-wali-" target="_blank">LinkedIn</a>
@@ -175,17 +264,69 @@
     </div>
   </section>
 
-  <footer>
-    © 2025 Syed Wali · Built with professionalism and passion for people.
-  </footer>
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>I’m a people-focused professional passionate about HR, technology, and people strategy. My goal is to help build workplaces that combine empathy with efficiency.</p>
+  </section>
 
-  <!-- Parallax scroll -->
+  <section class="experience" id="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item"><h3>SpringVerify (Springworks)</h3><h4>Customer Support Specialist</h4><p>Full-time · Apr 2025 – Present</p></div>
+      <div class="timeline-item"><h3>Springworks</h3><h4>Customer Support Intern</h4><p>Jan 2025 – Mar 2025</p></div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <h2>Skills & Tools</h2>
+    <div class="skill-bar"><div class="bar"><div class="bar-fill" style="width:90%;"></div></div></div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <form id="contact-form" action="https://formsubmit.co/syedwali7843@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <div class="thank-you" id="thank-you">✅ Thank you! Your message has been sent successfully.</div>
+  </section>
+
+  <footer>© 2025 Syed Wali · Built with 💼 professionalism and passion for people.</footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop">↑</button>
+
   <script>
+    // Parallax
     const hero = document.getElementById('hero-img');
     window.addEventListener('scroll', () => {
       const offset = window.scrollY * 0.3;
       hero.style.backgroundPositionY = offset + 'px';
     });
+
+    // Contact form thank-you animation
+    const form = document.getElementById('contact-form');
+    const thankYou = document.getElementById('thank-you');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      fetch(form.action, { method: 'POST', body: new FormData(form) })
+        .then(() => {
+          form.reset();
+          thankYou.style.display = 'block';
+          setTimeout(() => thankYou.style.display = 'none', 5000);
+        })
+        .catch(() => alert('Error! Please try again.'));
+    });
+
+    // Back to top button behavior
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) backToTop.classList.add('show');
+      else backToTop.classList.remove('show');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>
