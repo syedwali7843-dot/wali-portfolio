@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syed Wali – HR & People Operations Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f6f7f8;
+      --text: #1a1a1a;
+      --accent: #3b5a85;
+      --border: #d1d5db;
+      --radius: 14px;
+      --shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+      --transition: all 0.25s ease;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    .hero-left {
+      background-image:
+        linear-gradient(rgba(245, 246, 247, 0.8), rgba(245, 246, 247, 0.8)),
+        url('./assets/wali-photo.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: grayscale(40%);
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px;
+      background: #ffffff;
+      box-shadow: var(--shadow);
+      animation: fadeUp 1s ease forwards;
+    }
+
+    h1 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: var(--accent);
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    p {
+      color: #333;
+      margin-bottom: 30px;
+      max-width: 520px;
+    }
+
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn.primary:hover {
+      background: #2f405f;
+      border-color: #2f405f;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn.secondary:hover {
+      background: #e9edf2;
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { height: 40vh; }
+      .hero-right { padding: 40px; }
+      h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-left"></div>
+
+    <div class="hero-right">
+      <h1>I’m Syed Wali</h1>
+      <h2>Customer Support Specialist | HR & People Operations Professional</h2>
+      <p>
+        Bridging People, Processes & Technology to create efficient, people-first workplaces. 
+        Skilled in HR technology, onboarding, and client success — combining empathy with operational excellence.
+      </p>
+
+      <div class="btns">
+        <a class="btn primary" href="./assets/Syed_Wali_HR_Resume.pdf" target="_blank">View Resume</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/syed-wali-" target="_blank">LinkedIn</a>
+        <a class="btn secondary" href="mailto:syedwali7843@gmail.com">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Syed Wali · Built with 💼 professionalism and passion for people.
+  </footer>
+</body>
+</html>
