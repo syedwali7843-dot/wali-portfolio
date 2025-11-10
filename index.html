@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Syed Wali – HR & People Operations Portfolio</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -28,7 +27,6 @@
       overflow-x: hidden;
     }
 
-    /* ---------- HERO SECTION ---------- */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -43,19 +41,29 @@
       background-position: 35% center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      filter: grayscale(10%) contrast(120%) brightness(1.25) saturate(115%);
-      transform: translateZ(0);
-      will-change: background-position;
-      transition: background-position 0.2s ease-out;
+      filter: grayscale(5%) contrast(125%) brightness(1.35) saturate(120%);
+      transform: scale(1);
+      transition: transform 1.2s ease, filter 0.8s ease;
     }
 
-    /* Light overlay for better readability */
+    /* Hover animation for the photo */
+    .hero-left:hover {
+      transform: scale(1.05);
+      filter: grayscale(0%) contrast(130%) brightness(1.45) saturate(125%);
+    }
+
+    /* Light overlay for text readability */
     .hero-left::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.15);
       z-index: 1;
+      transition: background 0.5s ease;
+    }
+
+    .hero-left:hover::before {
+      background: rgba(255, 255, 255, 0.05);
     }
 
     .hero-right {
@@ -176,7 +184,7 @@
   <script>
     const hero = document.getElementById('hero-img');
     window.addEventListener('scroll', () => {
-      const offset = window.scrollY * 0.3; // adjust strength (0.2–0.5)
+      const offset = window.scrollY * 0.3;
       hero.style.backgroundPositionY = offset + 'px';
     });
   </script>
