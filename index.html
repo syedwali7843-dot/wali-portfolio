@@ -33,39 +33,29 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 100vh;
+      overflow: hidden;
     }
 
     .hero-left {
       position: relative;
       background-image: url('./assets/wali-photo.png');
       background-size: cover;
-      background-position: center center;
+      background-position: 35% center;
       background-repeat: no-repeat;
-      background-attachment: fixed; /* Parallax effect */
-      filter: grayscale(20%) contrast(108%) brightness(1.05);
+      background-attachment: fixed;
+      filter: grayscale(10%) contrast(120%) brightness(1.25) saturate(115%);
+      transform: translateZ(0);
+      will-change: background-position;
+      transition: background-position 0.2s ease-out;
     }
 
-    /* Smart overlay for auto tone adjustment */
+    /* Light overlay for better readability */
     .hero-left::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        rgba(255, 255, 255, 0.3),
-        rgba(240, 240, 240, 0.25)
-      );
-      mix-blend-mode: lighten;
-    }
-
-    /* Auto dark adjustment */
-    @media (prefers-color-scheme: dark) {
-      .hero-left::before {
-        background: linear-gradient(
-          rgba(0, 0, 0, 0.2),
-          rgba(0, 0, 0, 0.35)
-        );
-        mix-blend-mode: multiply;
-      }
+      background: rgba(255, 255, 255, 0.25);
+      z-index: 1;
     }
 
     .hero-right {
@@ -151,7 +141,7 @@
 
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
-      .hero-left { height: 45vh; background-attachment: scroll; }
+      .hero-left { height: 45vh; background-attachment: scroll; background-position: center center; }
       .hero-right { padding: 40px; }
       h1 { font-size: 32px; }
     }
@@ -160,7 +150,7 @@
 
 <body>
   <section class="hero">
-    <div class="hero-left"></div>
+    <div class="hero-left" id="hero-img"></div>
 
     <div class="hero-right">
       <h1>I’m Syed Wali</h1>
@@ -179,8 +169,16 @@
   </section>
 
   <footer>
-    © 2025 Syed Wali · Built with professionalism and passion for people.
+    © 2025 Syed Wali · Built with 💼 professionalism and passion for people.
   </footer>
+
+  <!-- Subtle parallax script -->
+  <script>
+    const hero = document.getElementById('hero-img');
+    window.addEventListener('scroll', () => {
+      const offset = window.scrollY * 0.3; // adjust strength (0.2–0.5)
+      hero.style.backgroundPositionY = offset + 'px';
+    });
+  </script>
 </body>
 </html>
-
